@@ -18,6 +18,7 @@ See the [wiki](https://github.com/ElyseAndren/BigQuery/wiki) for walk-throughs (
   * Dataset create user
   * List tables in dataset with last access
   * Comparing datatypes of column between different tables
+  * Standardized Naming Conventions
   
 ***
 ### [Resources Exceeded](https://github.com/ElyseAndren/BigQuery/wiki/Resources-Exceeded)
