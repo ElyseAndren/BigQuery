@@ -41,7 +41,7 @@ Contains useful functions to automate updating column descriptions in GCP table 
 * Transferring column descriptions from source table to destination table
 
 ***
-## [Slack Alerts](https://github.com/ElyseAndren/BigQuery/wiki/Slack-Alerts)
+### [Slack Alerts](https://github.com/ElyseAndren/BigQuery/wiki/Slack-Alerts)
 
 How to post slack messages from python using input from GCP tables.
 
