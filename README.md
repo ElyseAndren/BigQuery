@@ -26,10 +26,10 @@ See the [wiki](https://github.com/ElyseAndren/BigQuery/wiki) for walk-throughs (
 Contains useful BigQuery [User Defined Functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs).
 
 * Calculating Interpolated Median
-* Potential Abbreviations
+* Programmatically Finding Potential Abbreviations
 * Calculating Mortgage Balance
-* Fixed Rate
-* Adjustable Rate
+  * Fixed Rate
+  * Adjustable Rate
 * Subsequent Substrings
 * String within String
 * Character Occurrence Count
