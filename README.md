@@ -1,6 +1,6 @@
 # BigQuery
 
-Useful queries for Google Cloud's BigQuery..
+Useful queries for Google Cloud's BigQuery.
 
 See the [wiki](https://github.com/ElyseAndren/BigQuery/wiki) for walk-throughs (listed below).
 
