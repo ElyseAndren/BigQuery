@@ -21,6 +21,20 @@ See the [wiki](https://github.com/ElyseAndren/BigQuery/wiki) for walk-throughs (
   * Standardized Naming Conventions
   
 ***
+### [User Defined Functions](https://github.com/ElyseAndren/BigQuery/wiki/UDFs)
+
+Contains useful BigQuery [User Defined Functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs).
+
+* Calculating Interpolated Median
+* Potential Abbreviations
+* Calculating Mortgage Balance
+* Fixed Rate
+* Adjustable Rate
+* Subsequent Substrings
+* String within String
+* Character Occurrence Count
+  
+***
 ### [Resources Exceeded](https://github.com/ElyseAndren/BigQuery/wiki/Resources-Exceeded)
 
 Unfortunately, BigQuery has scalability issues with analytical functions .
