@@ -41,7 +41,7 @@ CREATE OR REPLACE FUNCTION
     FROM 
       SRCH01
       , SRCH02
-    WHERE (SELECT MIN(Z) FROM UNNEST([LENGTH(X2),LENGTH(Y2)]) Z) > 0
+    WHERE LENGTH(X2) > 1
       -- Same token placement
       AND OFST_X = OFST_Y
       -- is an abbreviation
