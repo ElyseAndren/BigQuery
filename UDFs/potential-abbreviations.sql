@@ -16,24 +16,24 @@ CREATE OR REPLACE FUNCTION
   ( WITH
       SRCH01 AS
         ( SELECT
-            x2
+            REGEXP_REPLACE(X2, r'[^A-Z ]', '') X2
             , OFST_X 
           FROM
             UNNEST(SPLIT(TRIM(
-              REGEXP_REPLACE(REGEXP_REPLACE(
+              REGEXP_REPLACE(
                 UPPER(X)
-              , r'[\s][\s]+', ' '), r'[^A-Z ]', '')
+              , r'[\s][\s]+', ' ')
             ), ' ') ) X2 WITH OFFSET AS OFST_X
         )
       , SRCH02 AS
         ( SELECT
-            Y2
+            REGEXP_REPLACE(Y2, r'[^A-Z ]', '') Y2
             , OFST_Y
           FROM
             UNNEST(SPLIT(TRIM(
-              REGEXP_REPLACE(REGEXP_REPLACE(
+              REGEXP_REPLACE(
                 UPPER(Y)
-              , r'[\s][\s]+', ' '), r'[^A-Z ]', '')
+              , r'[\s][\s]+', ' ')
             ), ' ') ) Y2 WITH OFFSET AS OFST_Y
         )
     SELECT
@@ -41,7 +41,7 @@ CREATE OR REPLACE FUNCTION
     FROM 
       SRCH01
       , SRCH02
-    WHERE 1 = 1
+    WHERE (SELECT MIN(Z) FROM UNNEST([LENGTH(X2),LENGTH(Y2)]) Z) > 0
       -- Same token placement
       AND OFST_X = OFST_Y
       -- is an abbreviation
