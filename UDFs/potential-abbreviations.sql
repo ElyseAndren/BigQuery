@@ -1,38 +1,54 @@
 CREATE OR REPLACE FUNCTION 
-  `prj.udf.potential_abbrs`
-  (x STRING, y STRING) 
-  RETURNS STRING 
-  LANGUAGE js AS 
-"""
-// Find potential abbreviations when comparing one search to subsequent search
-// e.g. ('3rd gen nest tstat','3rd generation nest thermostat') --> 'gen:generation|tstat:thermostat'
+  `udf.potential_abbrs` (x STRING, y STRING) AS
+(
+  /*  Find potential abbreviations when comparing one search to subsequent search
+      e.g. ('3rd gen nest tstat','3rd generation nest thermostat') 
+        --> 'gen:generation|tstat:thermostat'
 
-// 1) Trim strings and change all whitespace to one in length
-// 2) Remove all non-alphanumeric or space characters
-// 3) For each same placement token in both strings, join separated by colon
-//    if first value is contained within second value and has lower length by 2+
-//    and fisrt not plural or past tense of second
-// 4) Grab all distinct values and join by pipe
-
-var x2 = x.replace(/\s\s+/g, ' ').trim().replace(/[^a-zA-Z\s]/g, '');
-var y2 = y.replace(/\s\s+/g, ' ').trim().replace(/[^a-zA-Z\s]/g, '');
-var x2Len = x2.split(' ').length
-arr = []
-
-for ( i = 0 ; i < x2Len ; i++ ) {
-  var x3 = x2.split(' ').slice(i,i+1).join('')
-  var x4 = x3.replace(/(.)/g, "$1.*")
-  var y3 = y2.split(' ').slice(i,i+1).join('')
-  if( (new RegExp(x4)).test(y3) 
-      && (x3.length+1 < y3.length) 
-      && ![x3+'s',x3+'ed',x3+'d'].includes(y3)
-        // To do: Find more of these exclusion cases
-      ){
-        arr.push( x3 + ":" + y3 )
-    }
-}
-
-arr2 = Array.from(new Set(arr))
-return arr2.join("|") || null
-
-""";
+      1)  Trim and uppercase strings and change all whitespace to one in length
+      2)  Remove all non-alphabetic or space characters
+      3)  For each same placement token in both strings, join separated by colon
+            if first value is contained within second value and has lower length by 2+
+            and fisrt not plural or past tense of second
+      4)  Grab all distinct values and join by pipe
+  
+  */
+  ( WITH
+      SRCH01 AS
+        ( SELECT
+            x2
+            , OFST_X 
+          FROM
+            UNNEST(SPLIT(TRIM(
+              REGEXP_REPLACE(REGEXP_REPLACE(
+                UPPER(X)
+              , r'[\s][\s]+', ' '), r'[^A-Z ]', '')
+            ), ' ') ) X2 WITH OFFSET AS OFST_X
+        )
+      , SRCH02 AS
+        ( SELECT
+            Y2
+            , OFST_Y
+          FROM
+            UNNEST(SPLIT(TRIM(
+              REGEXP_REPLACE(REGEXP_REPLACE(
+                UPPER(Y)
+              , r'[\s][\s]+', ' '), r'[^A-Z ]', '')
+            ), ' ') ) Y2 WITH OFFSET AS OFST_Y
+        )
+    SELECT
+      STRING_AGG(DISTINCT CONCAT(X2, ':', Y2), '|') 
+    FROM 
+      SRCH01
+      , SRCH02
+    WHERE 1 = 1
+      -- Same token placement
+      AND OFST_X = OFST_Y
+      -- is an abbreviation
+      AND REGEXP_CONTAINS(Y2, REGEXP_REPLACE(X2, '', '.*'))
+      -- at least two fewer characters
+      AND (LENGTH(X2) + 1) < LENGTH(Y2)
+      -- not plural or past tense
+      AND NOT REGEXP_CONTAINS(Y2, CONCAT(r'^', X2, '(S|ED|D)$'))
+  )
+);
