@@ -32,6 +32,7 @@ Contains useful BigQuery [User Defined Functions](https://cloud.google.com/bigqu
   * Adjustable Rate
 * Subsequent Substrings
 * String within String
+* Sequential Nodes in Tree
 * Character Occurrence Count
   
 ***
