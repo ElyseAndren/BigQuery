@@ -8,10 +8,7 @@ CREATE FUNCTION `udf.seq_nodes_in_tree`(x STRING, y STRING) AS
       , t02 AS
         ( SELECT 
             a.VAR
-            , REGEXP_REPLACE(
-                -- not allowing me to split by y
-                STRING_AGG(B.VAR, '_-123-_' ORDER BY B.OFFSET)
-              , '_-123-_', y) PATHS 
+            , STRING_AGG(B.VAR, y ORDER BY B.OFFSET) PATHS 
           FROM t01 A, t01 B 
           WHERE A.OFFSET >= B.OFFSET
           GROUP BY 1
