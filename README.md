@@ -3,22 +3,6 @@
 Useful queries for Google Cloud's BigQuery.
 
 See the [wiki](https://github.com/ElyseAndren/BigQuery/wiki) for walk-throughs (listed below).
-
-***
-### [Metadata](https://github.com/ElyseAndren/BigQuery/wiki/Metadata)
-
-  Contains useful BQ queries to look up BQ job history or table/column information.
-  
-  * Finding Columns/Tables in GCP
-  * Finding Attribute Definitions
-  * Query History
-  * Top Users who hit Table
-  * Table create/modification history
-  * Who deleted a table
-  * Dataset create user
-  * List tables in dataset with last access
-  * Comparing datatypes of column between different tables
-  * Standardized Naming Conventions
   
 ***
 ### [User Defined Functions](https://github.com/ElyseAndren/BigQuery/wiki/UDFs)
@@ -34,6 +18,22 @@ Contains useful BigQuery [User Defined Functions](https://cloud.google.com/bigqu
 * String within String
 * Sequential Nodes in Tree
 * Character Occurrence Count
+  
+***
+### [Metadata](https://github.com/ElyseAndren/BigQuery/wiki/Metadata)
+
+  Contains useful BQ queries to look up BQ job history or table/column information.
+  
+  * Finding Columns/Tables in GCP
+  * Finding Attribute Definitions
+  * Query History
+  * Top Users who hit Table
+  * Table create/modification history
+  * Who deleted a table
+  * Dataset create user
+  * List tables in dataset with last access
+  * Comparing datatypes of column between different tables
+  * Standardized Naming Conventions
   
 ***
 ### [Resources Exceeded](https://github.com/ElyseAndren/BigQuery/wiki/Resources-Exceeded)
