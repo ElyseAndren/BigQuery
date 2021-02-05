@@ -64,3 +64,9 @@ How to post slack messages from python using input from GCP tables.
 * Simple Message
 * Message with Attachments
 * Attaching Metrics from GCP BigQuery
+
+
+***
+<!--
+Faith Andren
+--->
