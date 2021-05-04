@@ -2,10 +2,10 @@
 
 Useful queries for Google Cloud's BigQuery.
 
-See the [wiki](https://github.com/ElyseAndren/BigQuery/wiki) for walk-throughs (listed below).
+See the [wiki](https://github.com/FaithAndren/BigQuery/wiki) for walk-throughs (listed below).
   
 ***
-### [User Defined Functions](https://github.com/ElyseAndren/BigQuery/wiki/UDFs)
+### [User Defined Functions](https://github.com/FaithAndren/BigQuery/wiki/UDFs)
 
 Contains useful BigQuery [User Defined Functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs).
 
@@ -49,7 +49,7 @@ This page will walk you through how to get around those scaling errors for these
 * `NTILE() OVER(ORDER BY)` - grabbing approximate or exact n-tiles (e.g. decile your data)
 
 ***
-### [Auto Column Descriptions](https://github.com/ElyseAndren/BigQuery/wiki/Column-Descriptions)
+### [Auto Column Descriptions](https://github.com/FaithAndren/BigQuery/wiki/Column-Descriptions)
 
 Contains useful functions to automate updating column descriptions in GCP table schemas.
   
@@ -57,7 +57,7 @@ Contains useful functions to automate updating column descriptions in GCP table 
 * Transferring column descriptions from source table to destination table
 
 ***
-### [Slack Alerts](https://github.com/ElyseAndren/BigQuery/wiki/Slack-Alerts)
+### [Slack Alerts](https://github.com/FaithAndren/BigQuery/wiki/Slack-Alerts)
 
 How to post slack messages from python using input from GCP tables.
 
